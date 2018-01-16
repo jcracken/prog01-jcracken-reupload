@@ -117,13 +117,13 @@ int main(int argc, char** argv) {
 
 	//Setup our window and renderer
 	SDL_Window *window = SDL_CreateWindow("Basic SDL Test", 100, 100, num_cols, num_rows, SDL_WINDOW_SHOWN);
-	if (window == nullptr){
+	if (window == NULL){
 		logSDLError(std::cout, "CreateWindow");
 		SDL_Quit();
 		return 1;
 	}
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (renderer == nullptr){
+	if (renderer == NULL){
 		logSDLError(std::cout, "CreateRenderer");
     SDL_DestroyWindow(window);
 		SDL_Quit();
@@ -150,13 +150,13 @@ int main(int argc, char** argv) {
   background = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGB24,SDL_TEXTUREACCESS_STATIC,num_cols,num_rows);
   //Copy the raw data array into the texture.
   SDL_UpdateTexture(background, NULL, data, 3*num_cols);
-  if (background == nullptr){
+  if (background == NULL){
     logSDLError(std::cout, "CreateTextureFromSurface");
   }
 
 
   //Make sure they both loaded ok
-	if (background == nullptr){
+	if (background == NULL){
     SDL_DestroyTexture(background);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
