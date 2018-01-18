@@ -40,7 +40,7 @@
 
 
 //include SDL2 libraries
-#include <SDL.h>
+#include "SDL.h"
 
 //C++ includes
 #include <iostream>
