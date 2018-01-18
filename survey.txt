@@ -1,0 +1,8 @@
+1. I wanted to focus my master's on GPU and graphics related topics and ECE has exactly one GPU related course (I'm taking it in addition to this class) and no graphics courses.
+2. How to create and implement a graphics simulation/environment.
+3. C/C++ (the ECE department uses it heavily, 3 years), Java (was required to use it when I worked at IBM, 3 years), Verilog (the bane of my existence, 2 years)
+4. I have not used STL before. The ECE department basically makes you use either C or C++ for every major coding class.
+5. Yes, and yes, but I've never actually had to overload an operator.
+6. War for The Planet of the Apes. Those Apes are basically real.
+7. https://www.youtube.com/watch?v=FiARsQSlzDc . I think it's pretty apparent how bad it is, but also why it's really funny.
+8. The Meiji Restoration was a monumental period of Japanese history that saw the end of samuarai reign and the beginning of a period of westernization and modernization in order to allow the Japanese nation to better compete in a newly globalizing world and the big-budget high-profile Hollywood movie about this event centers around some white guy played by notable scientologist Tom Cruise.
