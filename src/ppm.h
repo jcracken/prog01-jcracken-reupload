@@ -9,16 +9,16 @@
 
 class ppm {
   private:
-    unsigned char* data;
+    char* data;
     int width;
     int height;
     int maxVal;
   public:
     ppm();
     void readData(std::string name);
-    unsigned char* returnData();
+    char* returnData();
     int returnWidth();
     int returnHeight();
     int returnMaxVal();
 };
-#endif PPM_H
+#endif

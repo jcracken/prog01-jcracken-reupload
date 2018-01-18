@@ -1,7 +1,7 @@
 #include "ppm.h"
 
 ppm::ppm(){
-  this->data = new unsigned char[256];
+  this->data = new char[256];
   this->width = 0;
   this->height = 0;
   this->maxVal = 0;
@@ -9,17 +9,17 @@ ppm::ppm(){
 
 void ppm::readData(std::string name){
   std::ifstream input(name.append(".ppm"), std::ifstream::in);
-  if(input == NULL){
+  if(!(input.is_open())){
     exit(EXIT_FAILURE);
   }
   input >> this->width;
   input >> this->height;
   input >> this->maxVal;
   input.close();
-  std::ifstream input(name.append(".ppm"), std::ios::binary);
-  input.read(this->data, this->maxVal);
+  std::ifstream input2(name.append(".ppm"), std::ios::binary);
+  input2.read((this->data), this->maxVal);
 }
-unsigned char* ppm::returnData(){
+char* ppm::returnData(){
   return this->data;
 }
 int ppm::returnWidth(){
