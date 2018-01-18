@@ -9,14 +9,14 @@ ppm::ppm(){
 
 void ppm::readData(std::string name){
   std::ifstream input(name.append(".ppm"), std::ifstream::in);
+  if(input == NULL){
+    exit(EXIT_FAILURE);
+  }
   input >> this->width;
   input >> this->height;
   input >> this->maxVal;
   input.close();
   std::ifstream input(name.append(".ppm"), std::ios::binary);
-  if(input == NULL){
-    exit(EXIT_FAILURE);
-  }
   input.read(this->data, this->maxVal);
 }
 unsigned char* ppm::returnData(){
