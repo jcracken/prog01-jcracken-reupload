@@ -20,5 +20,5 @@ class ppm {
     int returnWidth();
     int returnHeight();
     int returnMaxVal();
-}
+};
 #endif PPM_H

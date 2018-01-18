@@ -1,33 +1,33 @@
 #include "ppm.h"
 
 ppm::ppm(){
-  data = new unsigned char[256];
-  width = 0;
-  height = 0;
-  maxVal = 0;
+  this->data = new unsigned char[256];
+  this->width = 0;
+  this->height = 0;
+  this->maxVal = 0;
 }
 
-void readData(std::string name){
+void ppm::readData(std::string name){
   std::ifstream input(name.append(".ppm"), std::ifstream::in);
-  input >> width;
-  input >> height;
-  input >> maxVal;
+  input >> this->width;
+  input >> this->height;
+  input >> this->maxVal;
   input.close();
   std::ifstream input(name.append(".ppm"), std::ios::binary);
   if(input == NULL){
     exit(EXIT_FAILURE);
   }
-  input.read(data, maxVal);
+  input.read(this->data, this->maxVal);
 }
-unsigned char* returnData(){
-  return data;
+unsigned char* ppm::returnData(){
+  return this->data;
 }
-int returnWidth(){
-  return width;
+int ppm::returnWidth(){
+  return this->width;
 }
-int returnHeight(){
-  return height;
+int ppm::returnHeight(){
+  return this->height;
 }
-int returnMaxVal(){
-  return maxVal;
+int ppm::returnMaxVal(){
+  return this->maxVal;
 }
