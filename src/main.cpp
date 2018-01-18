@@ -90,7 +90,6 @@ void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y){
 
 
 
-
 ///
 /// Main function.  Initializes an SDL window, renderer, and texture,
 /// and then goes into a loop to listen to events and draw the texture.
@@ -112,6 +111,9 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
+	ppm* image = new ppm();
+	image->readData("bunny");
+
 	//Setup our window and renderer
 	SDL_Window *window = SDL_CreateWindow("Basic SDL Test", 100, 100, num_cols, num_rows, SDL_WINDOW_SHOWN);
 	if (window == NULL){
@@ -126,9 +128,23 @@ int main(int argc, char** argv) {
 		SDL_Quit();
 		return 1;
 	}
+	SDL_Window *windowImage = SDL_CreateWindow("Loaded Image", 100, 100, image->returnWidth(), image->returnHeight(), SDL_WINDOW_SHOWN);
+	if (window == NULL){
+		logSDLError(std::cout, "CreateWindowImage");
+		SDL_Quit();
+		return 1;
+	}
+	SDL_Renderer *rendererImage = SDL_CreateRenderer(windowImage, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (renderer == NULL){
+		logSDLError(std::cout, "CreateRendererImage");
+    SDL_DestroyWindow(windowImage);
+		SDL_Quit();
+		return 1;
+	}
 
 	//The textures we'll be using
 	SDL_Texture *background;
+	SDL_Texture *imageTexture;
 
   //A raw data array of characters.  Each column is drawn using the same
   //color that is a grayscale ramp from the leftmost to rightmost pixel.
@@ -145,12 +161,16 @@ int main(int argc, char** argv) {
   //Initialize the texture.  SDL_PIXELFORMAT_RGB24 specifies 3 bytes per
   //pixel, one per color channel
   background = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGB24,SDL_TEXTUREACCESS_STATIC,num_cols,num_rows);
+	imageTexture = SDL_CreateTexture(rendererImage,SDL_PIXELFORMAT_RGB24,SDL_TEXTUREACCESS_STATIC,image->returnWidth(),image->returnHeight());
   //Copy the raw data array into the texture.
   SDL_UpdateTexture(background, NULL, data, 3*num_cols);
   if (background == NULL){
     logSDLError(std::cout, "CreateTextureFromSurface");
   }
-
+	SDL_UpdateTexture(imageTexture, NULL, image->returnData(), image->returnMaxVal());
+  if (imageTexture == NULL){
+    logSDLError(std::cout, "CreateImageTextureFromSurface");
+  }
 
   //Make sure they both loaded ok
 	if (background == NULL){
@@ -160,8 +180,17 @@ int main(int argc, char** argv) {
 		SDL_Quit();
 		return 1;
 	}
+	if (imageTexture == NULL){
+    SDL_DestroyTexture(imageTexture);
+    SDL_DestroyRenderer(rendererImage);
+    SDL_DestroyWindow(windowImage);
+		SDL_Quit();
+		return 1;
+	}
 
-
+	renderTexture(imageTexture, rendererImage, 0, 0);
+	//Update the screen
+	SDL_RenderPresent(rendererImage);
 
   //Variables used in the rendering loop
   SDL_Event event;
@@ -178,7 +207,7 @@ int main(int argc, char** argv) {
 
     //Clear the screen
     SDL_RenderClear(renderer);
-
+		SDL_RenderClear(rendererImage);
 
 		//Event Polling
     //This while loop responds to mouse and keyboard commands.
@@ -238,6 +267,9 @@ int main(int argc, char** argv) {
   SDL_DestroyTexture(background);
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+	SDL_DestroyTexture(imageTexture);
+	SDL_DestroyRenderer(rendererImage);
+	SDL_DestroyWindow(windowImage);
 	SDL_Quit();
 
 
