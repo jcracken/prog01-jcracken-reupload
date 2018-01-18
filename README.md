@@ -13,5 +13,4 @@ Please edit this file accordingly.  Note that it is formatted in standard Markdo
 
 ### Attributions
 
-I modified the CMakeLists.txt file to reflect the CMakeLists.txt file used by ECE 275 and other ECE classes in order to get CMAke to work better.
-Used https://brendanwhitfield.wordpress.com/2015/02/26/using-cmake-with-sdl2/ and https://github.com/brendan-w/collector/blob/master/cmake/FindSDL2.cmake in order to get CMake to locate SDL2
+I modified the CMakeLists.txt file to reflect the CMakeLists.txt file used by ECE 275 and other ECE classes in order to get CMake to work better.
