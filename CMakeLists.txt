@@ -5,7 +5,7 @@
 
 cmake_minimum_required(VERSION 3.1)
 
-# Define the project name. 
+# Define the project name.
 
 project (sdl_demo)
 

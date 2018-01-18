@@ -22,10 +22,9 @@ set(SDL2_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/SDL2/include)
 find_package(SDL2 REQUIRED)
 
 set(source_files
-  main.cpp 
+  main.cpp
 )
 
 include_directories (${SDL2_INCLUDE_DIRS})
 add_executable (${PROJECT_NAME} ${SRCS})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
-

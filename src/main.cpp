@@ -11,10 +11,10 @@
 
 /*
  ***********************************************************************
- 
+
  Copyright (C) 2018, Joshua A. Levine
  University of Arizona
- 
+
  Permission is hereby granted, free of charge, to any person obtaining
  a copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including
@@ -22,10 +22,10 @@
  distribute, sublicense, and/or sell copies of the Software, and to
  permit persons to whom the Software is furnished to do so, subject to
  the following conditions:
- 
+
  The above copyright notice and this permission notice shall be
  included in all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -34,13 +34,13 @@
  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
- 
+
  ***********************************************************************
  */
 
 
 //include SDL2 libraries
-#include "SDL.h"
+#include <SDL.h>
 
 //C++ includes
 #include <iostream>
@@ -52,11 +52,7 @@
 using namespace std;
 
 
-
-
-
-
-/// 
+///
 /// Log an SDL error with some error message to the output stream of our
 /// choice
 ///
@@ -68,7 +64,7 @@ void logSDLError(std::ostream &os, const std::string &msg){
 }
 
 
-/// 
+///
 /// Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
 /// the texture's width and height
 ///
@@ -94,7 +90,7 @@ void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y){
 
 
 
-/// 
+///
 /// Main function.  Initializes an SDL window, renderer, and texture,
 /// and then goes into a loop to listen to events and draw the texture.
 ///
@@ -178,11 +174,11 @@ int main(int argc, char** argv) {
 	while (!quit){
     //Grab the time for frame rate computation
     const Uint64 start = SDL_GetPerformanceCounter();
-    
+
     //Clear the screen
     SDL_RenderClear(renderer);
-		
-    
+
+
 		//Event Polling
     //This while loop responds to mouse and keyboard commands.
     while (SDL_PollEvent(&event)){
