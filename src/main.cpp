@@ -41,6 +41,7 @@
 
 //include SDL2 libraries
 #include <SDL.h>
+#include "ppm.h"
 
 //C++ includes
 #include <iostream>
