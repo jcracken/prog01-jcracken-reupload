@@ -15,8 +15,11 @@ file( GLOB SRCS *.cpp *.h )
 # Define the target application executable (named hlsyn) and the list of CXX source
 # and header files needed for the executable.
 
-set(SDL2_LIBRARIES ${PROJECT_SOURCE_DIR}/SDL2/lib)
-set(SDL2_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/SDL2/include)
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+set(SDL2_LIBRARY_TEMP ${PROJECT_SOURCE_DIR}/SDL2)
+set(SDL2_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/SDL2/include)
+
+find_package(SDL2 REQUIRED)
 
 set(source_files
   main.cpp 
