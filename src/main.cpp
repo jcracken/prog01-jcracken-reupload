@@ -113,7 +113,6 @@ int main(int argc, char** argv) {
 
 	ppm* image = new ppm();
 	image->readData("bunny");
-
 	//Setup our window and renderer
 	SDL_Window *window = SDL_CreateWindow("Basic SDL Test", 100, 100, num_cols, num_rows, SDL_WINDOW_SHOWN);
 	if (window == NULL){

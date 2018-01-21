@@ -6,6 +6,7 @@
 #include <iterator>
 #include <algorithm>
 #include <cstdlib>
+#include <iostream>
 
 class ppm {
   private:

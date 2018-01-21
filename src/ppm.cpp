@@ -9,7 +9,12 @@ ppm::ppm(){
 
 void ppm::readData(std::string name){
   std::ifstream input(name.append(".ppm"), std::ifstream::in);
+  std::string temp;
   if(!(input.is_open())){
+    exit(EXIT_FAILURE);
+  }
+  getline(input, temp);
+  if(temp.compare("P6") != 0){
     exit(EXIT_FAILURE);
   }
   input >> this->width;
@@ -18,6 +23,7 @@ void ppm::readData(std::string name){
   input.close();
   std::ifstream input2(name.append(".ppm"), std::ios::binary);
   input2.read((this->data), this->maxVal);
+  input2.close();
 }
 char* ppm::returnData(){
   return this->data;
