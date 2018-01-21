@@ -11,10 +11,12 @@ void ppm::readData(std::string name){
   std::ifstream input(name.append(".ppm"), std::ifstream::in);
   std::string temp;
   if(!(input.is_open())){
+    std::cout << "File not found" << std::endl;
     exit(EXIT_FAILURE);
   }
   getline(input, temp);
   if(temp.compare("P6") != 0){
+    std::cout << "File not correct format" << std::endl;
     exit(EXIT_FAILURE);
   }
   input >> this->width;
