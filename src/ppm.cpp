@@ -1,14 +1,14 @@
 #include "ppm.h"
 
 ppm::ppm(){
-  this->data = new char[256];
+  this->data = NULL;
   this->width = 0;
   this->height = 0;
   this->maxVal = 0;
 }
 
 void ppm::readData(std::string name){
-  std::ifstream input(name.append(".ppm"), std::ifstream::in);
+  std::ifstream input(name.append(".ppm"), std::ifstream::in | std::ifstream::binary);
   std::string temp;
   if(!(input.is_open())){
     std::cout << "File not found" << std::endl;
@@ -22,10 +22,9 @@ void ppm::readData(std::string name){
   input >> this->width;
   input >> this->height;
   input >> this->maxVal;
+  this->data = new char[maxVal + 1];
+  input.read(data,maxVal + 1);
   input.close();
-  std::ifstream input2(name.append(".ppm"), std::ios::binary);
-  input2.read((this->data), this->maxVal);
-  input2.close();
 }
 char* ppm::returnData(){
   return this->data;

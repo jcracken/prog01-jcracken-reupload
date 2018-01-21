@@ -166,7 +166,7 @@ int main(int argc, char** argv) {
   if (background == NULL){
     logSDLError(std::cout, "CreateTextureFromSurface");
   }
-	SDL_UpdateTexture(imageTexture, NULL, image->returnData(), image->returnMaxVal());
+	SDL_UpdateTexture(imageTexture, NULL, image->returnData(), image->returnMaxVal() + 1);
   if (imageTexture == NULL){
     logSDLError(std::cout, "CreateImageTextureFromSurface");
   }
