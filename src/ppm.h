@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 class ppm {
   private:
@@ -14,6 +15,7 @@ class ppm {
     int width;
     int height;
     int maxVal;
+    void writeData(std::string name);
   public:
     ppm();
     void readData(std::string name);

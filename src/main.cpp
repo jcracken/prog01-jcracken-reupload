@@ -112,7 +112,12 @@ int main(int argc, char** argv) {
 	}
 
 	ppm* image = new ppm();
-	image->readData("bunny");
+	if(argc < 2){
+		cout << "usage: sdl_demo filename";
+		exit(EXIT_FAILURE);
+	}
+	image->readData(argv[1]);
+	//cout << image->returnWidth() << " " << image->returnHeight() << " " << image->returnMaxVal() << endl;
 	//Setup our window and renderer
 	SDL_Window *window = SDL_CreateWindow("Basic SDL Test", 100, 100, num_cols, num_rows, SDL_WINDOW_SHOWN);
 	if (window == NULL){
@@ -166,7 +171,7 @@ int main(int argc, char** argv) {
   if (background == NULL){
     logSDLError(std::cout, "CreateTextureFromSurface");
   }
-	SDL_UpdateTexture(imageTexture, NULL, image->returnData(), image->returnMaxVal() + 1);
+	SDL_UpdateTexture(imageTexture, NULL, image->returnData(), 3*image->returnWidth());
   if (imageTexture == NULL){
     logSDLError(std::cout, "CreateImageTextureFromSurface");
   }
@@ -256,7 +261,7 @@ int main(int argc, char** argv) {
     const static Uint64 freq = SDL_GetPerformanceFrequency();
     const double seconds = ( end - start ) / static_cast< double >( freq );
     //You may want to comment this line out for debugging purposes
-    std::cout << "Frame time: " << seconds * 1000.0 << "ms" << std::endl;
+    //std::cout << "Frame time: " << seconds * 1000.0 << "ms" << std::endl;
   }
 
 
