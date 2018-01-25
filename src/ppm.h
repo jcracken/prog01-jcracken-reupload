@@ -11,7 +11,7 @@
 
 class ppm {
   private:
-    char* data;
+    unsigned char* data;
     int width;
     int height;
     int maxVal;
@@ -19,7 +19,7 @@ class ppm {
   public:
     ppm();
     void readData(std::string name);
-    char* returnData();
+    unsigned char* returnData();
     int returnWidth();
     int returnHeight();
     int returnMaxVal();

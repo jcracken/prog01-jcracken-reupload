@@ -34,11 +34,16 @@ void ppm::readData(std::string name){
       i = 3;
     }
   }
-  this->data = new char[3*this->height*this->width];
+  this->data = new unsigned char[3*this->height*this->width];
+  /*while(input){
+    for(i = 0; i < 3*this->height*this->width; i++){
+      input.get((char&)this->data[i]);
+    }
+  }*/
   input.read(data, 3*this->height*this->width);
   input.close();
 }
-char* ppm::returnData(){
+unsigned char* ppm::returnData(){
   return this->data;
 }
 int ppm::returnWidth(){
@@ -53,6 +58,6 @@ int ppm::returnMaxVal(){
 void ppm::writeData(std::string name){
   std::ofstream out(name.append(".ppm"), std::ofstream::out | std::ofstream::binary);
   out << "P6\n" << this->width << " " << this->height << "\n" << this->maxVal << "\n";
-  out.write(this->data, this->width * this->height * 3);
+  out.write((char*)this->data, this->width * this->height * 3);
   out.close();
 }
