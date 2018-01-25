@@ -110,12 +110,13 @@ int main(int argc, char** argv) {
 		logSDLError(std::cout, "SDL_Init");
 		return 1;
 	}
-
+	//setup for loading image; create new object and check commandline args
 	ppm* image = new ppm();
 	if(argc < 2){
 		cout << "usage: sdl_demo filename";
 		exit(EXIT_FAILURE);
 	}
+	//read in image data
 	image->readData(argv[1]);
 	SDL_Window *window = SDL_CreateWindow("Basic SDL Test", 100, 100, num_cols, num_rows, SDL_WINDOW_SHOWN);
 	if (window == NULL){
@@ -160,11 +161,11 @@ int main(int argc, char** argv) {
     }
   }
 
-  //Initialize the texture.  SDL_PIXELFORMAT_RGB24 specifies 3 bytes per
+  //Initialize the textures.  SDL_PIXELFORMAT_RGB24 specifies 3 bytes per
   //pixel, one per color channel
   background = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGB24,SDL_TEXTUREACCESS_STATIC,num_cols,num_rows);
 	imageTexture = SDL_CreateTexture(rendererImage,SDL_PIXELFORMAT_RGB24,SDL_TEXTUREACCESS_STATIC,image->returnWidth(),image->returnHeight());
-  //Copy the raw data array into the texture.
+  //Copy the raw data array into the textures.
   SDL_UpdateTexture(background, NULL, data, 3*num_cols);
   if (background == NULL){
     logSDLError(std::cout, "CreateTextureFromSurface");
@@ -189,7 +190,7 @@ int main(int argc, char** argv) {
 		SDL_Quit();
 		return 1;
 	}
-
+	//render loaded texture here, as we won't be updating every frame
 	renderTexture(imageTexture, rendererImage, 0, 0);
 	//Update the screen
 	SDL_RenderPresent(rendererImage);
