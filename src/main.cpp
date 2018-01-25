@@ -117,8 +117,6 @@ int main(int argc, char** argv) {
 		exit(EXIT_FAILURE);
 	}
 	image->readData(argv[1]);
-	//cout << image->returnWidth() << " " << image->returnHeight() << " " << image->returnMaxVal() << endl;
-	//Setup our window and renderer
 	SDL_Window *window = SDL_CreateWindow("Basic SDL Test", 100, 100, num_cols, num_rows, SDL_WINDOW_SHOWN);
 	if (window == NULL){
 		logSDLError(std::cout, "CreateWindow");
@@ -261,7 +259,7 @@ int main(int argc, char** argv) {
     const static Uint64 freq = SDL_GetPerformanceFrequency();
     const double seconds = ( end - start ) / static_cast< double >( freq );
     //You may want to comment this line out for debugging purposes
-    //std::cout << "Frame time: " << seconds * 1000.0 << "ms" << std::endl;
+    std::cout << "Frame time: " << seconds * 1000.0 << "ms" << std::endl;
   }
 
 

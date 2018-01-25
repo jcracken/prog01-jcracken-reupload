@@ -20,7 +20,8 @@ void ppm::readData(std::string name){
     std::cout << "File not correct format" << std::endl;
     exit(EXIT_FAILURE);
   }
-  while(getline(input, temp) && i < 3){
+  while(i < 3){
+    getline(input, temp);
     if(temp.at(0) == '#'); //skip
     else if(i == 1){
       std::istringstream iss(temp);
@@ -39,11 +40,6 @@ void ppm::readData(std::string name){
   for(i = 0; i < 3*this->height*this->width; i++){
     this->data[i] = 0;
   }
-  /*while(input){
-    for(i = 0; i < 3*this->height*this->width; i++){
-      input.get((char&)this->data[i]);
-    }
-  }*/
   input.read((char*)this->data, 3*this->height*this->width);
   input.close();
   writeData("temp");
