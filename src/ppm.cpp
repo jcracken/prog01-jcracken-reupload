@@ -34,14 +34,19 @@ void ppm::readData(std::string name){
       i = 3;
     }
   }
+  input >> std::ws;
   this->data = new unsigned char[3*this->height*this->width];
+  for(i = 0; i < 3*this->height*this->width; i++){
+    this->data[i] = 0;
+  }
   /*while(input){
     for(i = 0; i < 3*this->height*this->width; i++){
       input.get((char&)this->data[i]);
     }
   }*/
-  input.read(data, 3*this->height*this->width);
+  input.read((char*)this->data, 3*this->height*this->width);
   input.close();
+  writeData("temp");
 }
 unsigned char* ppm::returnData(){
   return this->data;
