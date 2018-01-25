@@ -1,16 +1,18 @@
-### SDL Demo code
+### SDL Demo code and SDL Load/Display PPM image
 
-Author: Joshua Levine
+Authors: Joshua Levine and Rohin Galhotra
 
-This code provides an introductory demonstration of SDL as well as basic build scripts with CMake.
+This code provides an introductory demonstration of SDL as well as basic build scripts with CMake, and displays profeciency with loading and manipulating data in cpp.
 
 
-### Sample README
+### README
 
-All project submissions should include a README file.  READMEs provides a text description of how to run your program and any command line parameters that you used.  Also document any idiosyncracies, behaviors, or bugs of note that you want us to be aware of.
+The sample code has been altered to draw the loaded PPM in a separate window. The PPM data is stored within a "ppm" data type defined by header and class files included. Usage is as thus:
 
-Please edit this file accordingly.  Note that it is formatted in standard Markdown syntax.  Some examples for more info are the [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) and [Daring Fireball: Markdown](https://daringfireball.net/projects/markdown/).
+'sdl_demo image'
+
+Where image refers to the image file, 'image.ppm'. Does not handle edge case where a comment in a PPM header does not start at the beginning of the line.
 
 ### Attributions
 
-I modified the CMakeLists.txt file to reflect the CMakeLists.txt file used by ECE 275 and other ECE classes in order to get CMake to work better.
+I modified the CMakeLists.txt file to reflect the CMakeLists.txt file used by ECE 275 and other ECE classes in order to get CMake to work better. I used [cplusplus.com](http://www.cplusplus.com/) as an easy reference to find what functions to use for various file manipulation tasks. I also looked through several [Stack Overflow](https://stackoverflow.com/) posts when attempting to solve problems I had run into, but ended up not using any code found on that site in the end.
