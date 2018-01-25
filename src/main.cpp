@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
 	//setup for loading image; create new object and check commandline args
 	ppm* image = new ppm();
 	if(argc < 2){
-		cout << "usage: sdl_demo filename";
+		cout << "usage: prog01 filename" << endl;
 		exit(EXIT_FAILURE);
 	}
 	//read in image data

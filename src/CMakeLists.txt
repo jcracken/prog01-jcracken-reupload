@@ -12,7 +12,7 @@ endif()
 
 file( GLOB SRCS *.cpp *.h )
 
-# Define the target application executable (named hlsyn) and the list of CXX source
+# Define the target application executable (named prog01) and the list of CXX source
 # and header files needed for the executable.
 
 find_package(SDL2 REQUIRED)

@@ -9,7 +9,7 @@ This code provides an introductory demonstration of SDL as well as basic build s
 
 The sample code has been altered to draw the loaded PPM in a separate window. The PPM data is stored within a "ppm" data type defined by header and class files included. Usage is as thus:
 
-'sdl_demo image'
+'prog01 image'
 
 Where image refers to the image file, 'image.ppm'. Does not handle edge case where a comment in a PPM header does not start at the beginning of the line.
 
